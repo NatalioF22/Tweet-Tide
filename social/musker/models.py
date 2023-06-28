@@ -8,7 +8,7 @@ class Meep(models.Model):
         User, related_name="meeps",
         on_delete=models.DO_NOTHING
     )
-    body = models.CharField(max_length=200)
+    body = models.CharField(max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User,related_name="meep_like", blank=True)
     

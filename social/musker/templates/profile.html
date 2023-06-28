@@ -16,13 +16,15 @@
                <div class="row">
                   <div class="col-2">
                      {% if profile.profile_image %}
-                     <img src={{profile.profile_image.url}} width=200 heigth=200 class="img-fluid rounded-circle" alt={{profile.user.username}} >
+                     <img src={{profile.profile_image.url}}  width=100 height=100 class="" style="border-radius:50%" alt={{profile.user.username}} >
                      {%else%}
-                     <img src="{% static 'images/profile.png' %}" width=200 heigth=200 class="img-fluid rounded-circle" alt="Profile Image" >
+                     <img src="{% static 'images/profile_img.png' %}"  width=100 height=100 class="" style="border-radius:50%" alt="Profile Image" >
                      {% endif %}
                   </div>
                   <div class="col-10">
+                    <div class='border border-3 border-primary-subtle rounded-3'>
                      {{meep.body}}<br>
+                    </div>
                      {{meep.created_at}} By @{{meep.user.username}}
                      - {{meep.number_of_likes}} Likes -
                      {%if user in meep.likes.all %}
@@ -53,14 +55,15 @@
          </div>
          {% endfor %}
          {%endif%}
+         
       </div>
       <div class="col-4">
          <br><br/>
          <br><br/>
          {%if profile.profile_image %}
-         <img src = "{{profile.profile_image.url}}" width=300 heigth=300 class="img-fluid rounded-5"   >
+         <img src = "{{profile.profile_image.url}}"  width=200 height=200 class="" style="border-radius:50%"   >
          {%else%}
-         <img src="{% static 'images/profile.png' %}" width=200 heigth=200 class="img-fluid rounded-circle" alt="Profile Image" >
+         <img src="{% static 'images/profile_img.png' %}"  width=200 height=200 class="" style="border-radius:50%" alt="Profile Image" >
          {% endif %}
          <br><br/>
          {% if profile.facebook_link or profile.linkedIn_link or profile.instagram_link or profile.homepage_link %}

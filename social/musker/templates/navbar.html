@@ -1,5 +1,5 @@
 {% load static%}
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg navbar-dark text-light">
    <div class="container-fluid">
       <a class="navbar-brand" href="{%url 'home' %}">Musker</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,9 +34,9 @@
             <li class="nav-link navbar-brand">
                <a href="{% url 'profile' request.user.id %}">
                {%if user.profile.profile_image%}
-               <img src="{{user.profile.profile_image.url}}" class="rounded-circle" width=50 >
+               <img src="{{user.profile.profile_image.url}}" width=50 height=50 class="" style="border-radius:50%" >
                {%else%}
-               <img src="{% static 'images/profile.png' %}" class="img-fluid rounded-start" width=50- alt="profiel image">
+               <img src="{% static 'images/profile_img.png' %}" width=50 height=50 class="" style="border-radius:50%" alt="profile image">
                {%endif%}
                </a>
             </li>

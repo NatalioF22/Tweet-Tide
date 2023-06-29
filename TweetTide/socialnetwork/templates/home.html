@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container-fluid bg-dark text-white py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                <h1>TweetTides</h1><br>
+                {% for post in tideposts %}
+                <div class="card bg-secondary text-white mb-3 p-3">
+                    <div class="row g-0">
+                        <div class="col-2">
+                            {% if post.user.profile.profile_image %}
+                            <img src="{{ post.user.profile.profile_image.url }}" width=70 height=70 class="" style="border-radius:50%" alt="{{ profile.user.username }}">
+                            {% else %}
+                            <img src="{% static 'images/profile_img.png' %}" width=50 height=50 class="img-fluid rounded-circle" alt="Profile Image">
+                            {% endif %}
+                        </div>
+                        <div class="col-10">
+                            <div class="card-body">
+                                <p class="card-text">{{ post.body }}</p>
+                                <small class="text-muted">
+                                    {{ post.created_at }} By @{{ post.user.username }}
+                                    - {{ post.number_of_likes }}
+                                    {% if user in post.likes.all %}
+                                    <a href="{% url 'tweet_like' post.id %}" class="text-decoration-none text-primary" style="font-size: 30px;">
+                                        &#9829;
+                                    </a>
+                                    {% else %}
+                                    <a href="{% url 'tweet_like' post.id %}" class="text-decoration-none text-primary" style="font-size: 30px;">
+                                        &#9825;
+                                    </a>
+                                    {% endif %}
+                                    <a href="{% url 'tweet_show' post.id %}" class="text-decoration-none text-danger" style="font-size: 30px;">
+                                        &#x27A6;
+                                    </a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-4">
+                <br><br/><br>
+                {% if form %}
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-outline-light">Tweet this Tide</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<nav aria-label="Page Navegation">
+    <ul class="pagination justify-content-center">
+{% if tideposts.has_previous%}
+    <li class="page-item"> <a href="?page=1"  class=" page-link">&laquo First</a></li>
+    <li class="page-item"> <a href="?page={{tideposts.previous_page_number}}"  class=" page-link">Previous</a> </li>
+{%endif%}
+<!--
+<li class="page-item disabled"><a href="#" class="page-link"> Page {{ venues.number }} of {{venues.paginator.num_pages}} </a></li>
+-->
+{%for i in nums%}
+
+    <li class="page-item"><a class="page-link" href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+
+{%endfor%}
+
+
+{% if tideposts.has_next %}
+<li class="page-item"> <a href="?page={{tideposts.next_page_number}}" class="page-link">Next</a></li>
+<li class="page-item"> <a href="?page={{tideposts.paginator.num_pages}}"  class=" page-link">Last &raquo</a></li>
+{%endif%}</ul>
+    </nav>
+{% endblock %}

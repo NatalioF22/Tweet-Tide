@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{%load static %}
+{%block content%}
+<div class='container text-center'>
+   <div class='row'>
+      <div class="col-12">
+         <h1>TidePost</h1>
+         <br>
+         <div class="alert alert-dark" role="alert">
+            <div class="container">
+               <div class="row">
+                  <div class="col-1">
+                     {% if tidepost.user.profile.profile_image %}
+                     <img src={{tidepost.user.profile.profile_image.url}} width=200 heigth=200 class="img-fluid rounded-circle" alt={{profile.user.username}} >
+                     {%else%}
+                     <img src="{% static 'images/profile_img.png' %}" width=200 heigth=200 class="img-fluid rounded-circle" alt="Profile Image" >
+                     {% endif %}
+                  </div>
+                  <div class="col-11">
+                     {{tidepost.body}}<br>
+                     <small class = "text-muted" >
+                     {{tidepost.created_at}} By @{{tidepost.user.username}}
+                     - {{tidepost.number_of_likes}} Likes - 
+                     {%if user in tidepost.likes.all %}
+                     <a href="{% url 'tweet_like' tidepost.id %}" style="text-decoration:none ;color:#15b1e6;  font-size:30px; vertical-align:top">
+                     &#9829
+                     </a>
+                     {%else%}
+                     <a href="{% url 'tweet_like' tidepost.id %}"  style="text-decoration:none ;color:#15b1e6;  font-size:30px; vertical-align:top">
+                     &#9825
+                     </a>
+                     {%endif%}
+                     </small><br/>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <br><br/><br>
+         {%if form %}
+         <form method=POST>
+            {%csrf_token%}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-outline-secondary">Update TidePost</button>
+         </form>
+         {%endif%}
+      </div>
+   </div>
+</div>
+{%endblock%}

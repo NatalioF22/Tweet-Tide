@@ -1,11 +1,11 @@
 # Twitter-Clone
 
+![Screenshot 2023-06-29 145009](https://github.com/NatalioF22/Twitter-Clone/assets/116610989/16888db1-b6a2-4357-941a-b8637de9aa81)
+![Screenshot 2023-06-29 144948](https://github.com/NatalioF22/Twitter-Clone/assets/116610989/93d21055-71b3-414d-9fc8-80edb79d8bf1)
+![Screenshot 2023-06-28 024156](https://github.com/NatalioF22/Twitter-Clone/assets/116610989/f309ed05-9305-43ef-86fb-ac65abcd83be)
+
+
 This is a Twitter clone application built using the Django web framework.
-![Screenshot 2023-06-28 023828](https://github.com/NatalioF22/Twitter-Clone/assets/116610989/1fe935a6-ef36-4cf1-89d3-53f1c90dc7b9)
-
-![Screenshot 2023-06-28 023910](https://github.com/NatalioF22/Twitter-Clone/assets/116610989/c7ff4118-15a6-46b1-9905-e8089e4468eb)
-
-![Screenshot 2023-06-28 024153](https://github.com/NatalioF22/Twitter-Clone/assets/116610989/cbbaae90-2f88-40cb-8f5d-b034028be8e4)
 
 ## Features
 
